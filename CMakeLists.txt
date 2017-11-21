@@ -15,7 +15,9 @@ string(APPEND CMAKE_CXX_FLAGS " -O3")
 #string(APPEND CMAKE_CXX_FLAGS " -Wall -ggdb") #debug
 string(APPEND CMAKE_CUDA_FLAGS " -O3 -prec-sqrt=false")
 #string(APPEND CMAKE_CUDA_FLAGS " -Xptxas=-v --compiler-options -Wall") #debug
+string(APPEND CMAKE_CUDA_FLAGS " -gencode arch=compute_37,code=compute_37")
 string(APPEND CMAKE_CUDA_FLAGS " -gencode arch=compute_52,code=compute_52")
+string(APPEND CMAKE_CUDA_FLAGS " -gencode arch=compute_60,code=compute_60")
 string(APPEND CMAKE_CUDA_FLAGS " -gencode arch=compute_61,code=compute_61") #TUD HPC25
 if(CMAKE_CUDA_COMPILER_VERSION LESS 9.0)
 	string(APPEND CMAKE_CUDA_FLAGS " -gencode arch=compute_20,code=compute_20") #TUD T7500

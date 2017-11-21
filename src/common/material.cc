@@ -84,9 +84,10 @@ material& material::set_inelastic_data(double K, const std::map<double,double>& 
     if(dcs_int_map.empty())
         return *this;
     dcs_int_map[0] = 0;
-    dcs_int_map[K] = 0;
+   	dcs_int_map[std::min(K, dcs_map.crbegin()->first)] = 0;
+    double omega_max = std::min(K, dcs_map.crbegin()->first);
     const spline cumulative_dcs = spline::linear(dcs_int_map).integrate(0);
-    const double tcs = cumulative_dcs(K);
+    const double tcs = cumulative_dcs(omega_max);
     _inelastic_tcs[log_K] = std::log(tcs);
     std::map<double,double> icdf_map;
     for(auto cit = dcs_int_map.cbegin(); cit != dcs_int_map.cend(); cit++) {

@@ -171,5 +171,5 @@ process = ['bin/cstool', 'compile-mat',
      '--work-function', str(mat['work_func']),
      '--phonon-loss', str(mat['phonon_loss'])]
 if 'band_gap' in mat:
-    process.append('--band-gap', str(mat['band_gap']))
+    process.extend(('--band-gap', str(mat['band_gap'])))
 subprocess.run(process, check=True)
